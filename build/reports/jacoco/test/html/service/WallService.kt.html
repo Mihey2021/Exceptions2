@@ -59,46 +59,41 @@ object WallService {
 
     @Throws(PostNotFoundException::class)
     fun createComment(comment: Comment): Boolean {
-<span class="fc" id="L62">        var postFound = false</span>
-<span class="fc bfc" id="L63" title="All 2 branches covered.">        for (post in posts) {</span>
-<span class="pc bpc" id="L64" title="1 of 2 branches missed.">            if (post.id == comment.postId) {</span>
-<span class="fc" id="L65">                postFound = true</span>
-<span class="fc" id="L66">                comments += comment</span>
-<span class="fc" id="L67">                println(&quot;вњ” РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅ Рє РїРѕСЃС‚Сѓ id: ${comment.postId} (${comment.text})&quot;)</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">         for (post in posts) {</span>
+<span class="pc bpc" id="L63" title="1 of 2 branches missed.">            if (post.id == comment.postId) {</span>
+<span class="fc" id="L64">                comments += comment</span>
+<span class="fc" id="L65">                println(&quot;вњ” РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅ Рє РїРѕСЃС‚Сѓ id: ${comment.postId} (${comment.text})&quot;)</span>
+<span class="fc" id="L66">                return true</span>
             }
         }
-<span class="fc bfc" id="L70" title="All 2 branches covered.">        if (!postFound) {</span>
-<span class="fc" id="L71">            throw PostNotFoundException(&quot;вњ– РќРµРІРѕР·РјРѕР¶РЅРѕ РґРѕР±Р°РІРёС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№ Рє РїРѕСЃС‚Сѓ: РџРѕСЃС‚Р° СЃ id ${comment.postId} РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚!&quot;)</span>
-        }
-
-<span class="fc" id="L74">        return true</span>
+<span class="fc" id="L69">        throw PostNotFoundException(&quot;вњ– РќРµРІРѕР·РјРѕР¶РЅРѕ РґРѕР±Р°РІРёС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№ Рє РїРѕСЃС‚Сѓ: РџРѕСЃС‚Р° СЃ id ${comment.postId} РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚!&quot;)</span>
     }
 
     @Throws(ReasonNotFoundException::class, CommentNotFoundException::class)
     fun makeComplain(complain: Complain): Int {
-<span class="fc" id="L79">        var commentIdFound = false;</span>
-<span class="fc bfc" id="L80" title="All 2 branches covered.">        for (comment in comments) {</span>
-<span class="fc bfc" id="L81" title="All 2 branches covered.">            if (comment.id == complain.commentId) {</span>
-<span class="fc" id="L82">                commentIdFound = true</span>
+<span class="fc" id="L74">        var commentIdFound = false;</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">        for (comment in comments) {</span>
+<span class="fc bfc" id="L76" title="All 2 branches covered.">            if (comment.id == complain.commentId) {</span>
+<span class="fc" id="L77">                commentIdFound = true</span>
             }
         }
 
-<span class="fc bfc" id="L86" title="All 2 branches covered.">        if (complain.reason == null) throw ReasonNotFoundException(&quot;вњ– РќРµРІРѕР·РјРѕР¶РЅРѕ РїРѕРґР°С‚СЊ Р¶Р°Р»РѕР±Сѓ: СѓРєР°Р¶РёС‚Рµ РїСЂРёС‡РёРЅСѓ!&quot;)</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">        if (complain.reason == null) throw ReasonNotFoundException(&quot;вњ– РќРµРІРѕР·РјРѕР¶РЅРѕ РїРѕРґР°С‚СЊ Р¶Р°Р»РѕР±Сѓ: СѓРєР°Р¶РёС‚Рµ РїСЂРёС‡РёРЅСѓ!&quot;)</span>
 
-<span class="fc bfc" id="L88" title="All 2 branches covered.">        if (!commentIdFound) throw CommentNotFoundException(&quot;вњ– РќРµРІРѕР·РјРѕР¶РЅРѕ РїРѕРґР°С‚СЊ Р¶Р°Р»РѕР±Сѓ (${complain.reason.text}, РєРѕРґ РїСЂРёС‡РёРЅС‹: ${complain.reason.id}): РљРѕРјРјРµРЅР°СЂРёСЏ СЃ id ${complain.commentId} РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚!&quot;)</span>
+<span class="fc bfc" id="L83" title="All 2 branches covered.">        if (!commentIdFound) throw CommentNotFoundException(&quot;вњ– РќРµРІРѕР·РјРѕР¶РЅРѕ РїРѕРґР°С‚СЊ Р¶Р°Р»РѕР±Сѓ (${complain.reason.text}, РєРѕРґ РїСЂРёС‡РёРЅС‹: ${complain.reason.id}): РљРѕРјРјРµРЅР°СЂРёСЏ СЃ id ${complain.commentId} РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚!&quot;)</span>
 
-<span class="fc" id="L90">        complains += complain</span>
-<span class="fc" id="L91">        println(&quot;вњ” Р–Р°Р»РѕР±Р° СѓСЃРїРµС€РЅРѕ РїРѕРґР°РЅР° (РљРѕРјРјРµРЅР°СЂРёР№ id: ${complain.commentId}. РџСЂРёС‡РёРЅР°: ${complain.reason.text}, РєРѕРґ РїСЂРёС‡РёРЅС‹: ${complain.reason.id})&quot;)</span>
+<span class="fc" id="L85">        complains += complain</span>
+<span class="fc" id="L86">        println(&quot;вњ” Р–Р°Р»РѕР±Р° СѓСЃРїРµС€РЅРѕ РїРѕРґР°РЅР° (РљРѕРјРјРµРЅР°СЂРёР№ id: ${complain.commentId}. РџСЂРёС‡РёРЅР°: ${complain.reason.text}, РєРѕРґ РїСЂРёС‡РёРЅС‹: ${complain.reason.id})&quot;)</span>
 
-<span class="fc" id="L93">        return 1</span>
+<span class="fc" id="L88">        return 1</span>
     }
 
     fun getLastPostId(): Int {
-<span class="fc bfc" id="L97" title="All 4 branches covered.">        return if (posts.isEmpty()) 0 else posts.last().id</span>
+<span class="fc bfc" id="L92" title="All 4 branches covered.">        return if (posts.isEmpty()) 0 else posts.last().id</span>
     }
 
     fun clearWall() {
-<span class="fc" id="L101">        posts = emptyArray&lt;Post&gt;()</span>
-<span class="fc" id="L102">    }</span>
+<span class="fc" id="L96">        posts = emptyArray&lt;Post&gt;()</span>
+<span class="fc" id="L97">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

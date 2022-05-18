@@ -59,24 +59,19 @@ object WallService {
 
     @Throws(PostNotFoundException::class)
     fun createComment(comment: Comment): Boolean {
-        var postFound = false
-        for (post in posts) {
+         for (post in posts) {
             if (post.id == comment.postId) {
-                postFound = true
                 comments += comment
                 println("✔ Комментарий успешно добавлен к посту id: ${comment.postId} (${comment.text})")
+                return true
             }
         }
-        if (!postFound) {
-            throw PostNotFoundException("✖ Невозможно добавить комментарий к посту: Поста с id ${comment.postId} не существует!")
-        }
-
-        return true
+        throw PostNotFoundException("✖ Невозможно добавить комментарий к посту: Поста с id ${comment.postId} не существует!")
     }
 
     @Throws(ReasonNotFoundException::class, CommentNotFoundException::class)
     fun makeComplain(complain: Complain): Int {
-        var commentIdFound = false;
+        var commentIdFound = false
         for (comment in comments) {
             if (comment.id == complain.commentId) {
                 commentIdFound = true
