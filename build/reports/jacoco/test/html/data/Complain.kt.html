@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Complain.kt</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Posts</a> &gt; <a href="index.source.html" class="el_package">data</a> &gt; <span class="el_source">Complain.kt</span></div><h1>Complain.kt</h1><pre class="source lang-java linenums">package data
+
+<span class="fc" id="L3">data class Complain(</span>
+<span class="pc" id="L4">    val ownerId: Int,</span>
+<span class="fc" id="L5">    val commentId: Int,</span>
+<span class="fc" id="L6">    val reason: ReasonsComplain? = null</span>
+<span class="fc" id="L7">)</span>
+
+<span class="fc" id="L9">enum class ReasonsComplain(</span>
+<span class="fc" id="L10">    val id: Int,</span>
+<span class="fc" id="L11">    val text: String</span>
+) {
+<span class="fc" id="L13">    SPAM(0, &quot;СЃРїР°Рј&quot;),</span>
+<span class="fc" id="L14">    CHLDPRN(1, &quot;РґРµС‚СЃРєР°СЏ РїРѕСЂРЅРѕРіСЂР°С„РёСЏ&quot;),</span>
+<span class="fc" id="L15">    EXTREMISM(2, &quot;СЌРєСЃС‚СЂРµРјРёР·Рј&quot;),</span>
+<span class="fc" id="L16">    VIOLENCE(3, &quot;РЅР°СЃРёР»РёРµ&quot;),</span>
+<span class="fc" id="L17">    DRUGS(4, &quot;РїСЂРѕРїР°РіР°РЅРґР° РЅР°СЂРєРѕС‚РёРєРѕРІ&quot;),</span>
+<span class="fc" id="L18">    ADULT(5, &quot;РјР°С‚РµСЂРёР°Р» РґР»СЏ РІР·СЂРѕСЃР»С‹С…&quot;),</span>
+<span class="fc" id="L19">    ABUSE(6, &quot;РѕСЃРєРѕСЂР±Р»РµРЅРёРµ&quot;),</span>
+<span class="fc" id="L20">    SUICIDE(8, &quot;РїСЂРёР·С‹РІС‹ Рє СЃСѓРёС†РёРґСѓ&quot;);</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
